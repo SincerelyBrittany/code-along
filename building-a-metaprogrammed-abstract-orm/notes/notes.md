@@ -1,5 +1,7 @@
 Youtube Video Watched: https://www.youtube.com/watch?time_continue=112&v=hts7TjpPw-8&feature=emb_logo
 
+Github link: https://github.com/SincerelyBrittany/lv-meta-orm
+
 Steps taken
   Create folders
     App
@@ -86,3 +88,17 @@ Steps taken
           # it will say you gave one when it required 3
           #to avoid this you must use splatter which consist of
             three_args(*[1,2,3])
+
+
+        #Makes your page less vulunerable
+          /posts/1
+          Post.find(params[:id])
+          SELECT * FROM posts WHERE ; DROP TABLE users;
+
+          INJECTION example
+          p.title = "whatever); DROP TABLE posts;"
+
+          1.26.00 minutes in youtube video
+
+the data can come from a user you never want to inject it directly in the sql, you want the driver to santize and that there are no semicolons.
+        WHenever someone has the ability to

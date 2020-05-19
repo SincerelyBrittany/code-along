@@ -1,13 +1,27 @@
-# class Author
+# # class Post < ActiveRecord::Base
+# #
+# #   ATTRIBUTES = {
+# #     :id => "INTEGER PRIMARY KEY",
+# #     :title => "TEXT",
+# #     :content => "TEXT",
+# #     :author_name => "TEXT"
+# #
+# #   }
+# #
+# #   incude Perisable::InstanceMethods
+# #   extend Persisable::ClassMethods
+# #
+# # end
+#
+# class Post
 #
 #   ATTRIBUTES = {
 #     #hash that represents the schemaof your model
 #     #  attr_accessor :id, :title, :content
 #     :id => "INTEGER PRIMARY KEY",
-#     :name => "TEXT",
-#     :state => "TEXT",
-#     :city => "TEXT",
-#     :age => "INTEGER",
+#     :title => "TEXT",
+#     :content => "TEXT",
+#     :author_name => "TEXT"
 #
 #   }
 #
@@ -17,18 +31,18 @@
 #       #id, title, and content, and one at a time were passing the attr_accessor
 #       attr_accessor attr_name
 #     end
-#
-#     def destroy
-#       sql = <<-SQL
-#         DELETE FROM #{self.class.table_name} WHERE id = ?
-#       SQL
-#
-#       DB[:conn].execute(sql, self.id)
-#     end
-#
+
+
+    # def destroy
+    #   sql = <<-SQL
+    #     DELETE FROM #{self.class.table_name} WHERE id = ?
+    #   SQL
+        # DB[:conn].execute(sql, self.id)
+    #   end
 #
 #     def self.table_name
 #       #everytime I see the word post I want to see this method instead -- Abstraction
+#       # @@table_name || "#{self.to_s.downcase}s" -- if you want to change the table name
 #       "#{self.to_s.downcase}s"
 #       #Same as "#{Post.to_s.downcase}s"
 #     end
@@ -107,6 +121,7 @@
 #
 #     def self.question_marks_for_insert
 #       #how to change numbers to question marks
+#
 #       (ATTRIBUTES.keys.size-1).times.collect{"?"}.join(",")
 #
 #     end
@@ -124,10 +139,12 @@
 #
 #     private
 #     def insert
+#       #Goal is to get INSERT INTO posts [title, content] VALUES (?,?)
 #       sql = <<-SQL
 #         INSERT INTO #{self.class.table_name}(#{self.class.attribute_names_for_insert})
 #         VALUES (#{self.class.question_marks_for_insert})
 #       SQL
+#
 #
 #        DB[:conn].execute(sql, *[attribute_values])
 #        #attribute_values is an array (one argument)
