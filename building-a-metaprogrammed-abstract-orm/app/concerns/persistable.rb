@@ -1,5 +1,16 @@
 module Persistable
   module ClassMethods
+    def self.extended(base) #Hook/lifecycle/callback
+      puts "#{base} has been extended by #{self}"
+      # base.attributes.keys.each do |attr_name|
+      # attr_accessor attr_name
+      # end
+    end
+
+    # def attributes
+    #     self::ATTRIBUTES
+    # end
+
     def table_name
         "#{self.to_s.downcase}s"
     end
@@ -60,6 +71,10 @@ module Persistable
   end
 
   module InstanceMethods
+    def self.included(base) #Hook/lifecycle/callback
+      puts "#{base} has been extended by #{self}"
+    end
+
     def destroy
       sql = <<-SQL
         DELETE FROM #{self.class.table_name} WHERE id = ?

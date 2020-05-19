@@ -89,14 +89,15 @@ Steps taken
           #to avoid this you must use splatter which consist of
             three_args(*[1,2,3])
 
+Important to read : http://zetcode.com/db/sqliteruby/bind/
 
         #Makes your page less vulunerable
           /posts/1
           Post.find(params[:id])
           SELECT * FROM posts WHERE ; DROP TABLE users;
 
-          INJECTION example
-          p.title = "whatever); DROP TABLE posts;"
+          SQL INJECTION example
+          p.title = "'whatever'); DROP TABLE posts;"
 
           1.26.00 minutes in youtube video
 
