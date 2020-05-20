@@ -9,7 +9,7 @@ bundle add sqlite3
 touch app/controller/application_controller.rb
 
 rake -T
-rake db:create_migration create_wands
+rake db:create_migration NAME=create_wands
 rake db:seed
 
 
@@ -20,3 +20,4 @@ rake db:seed
 
 
 Know how to create a search bar
+appropriate view

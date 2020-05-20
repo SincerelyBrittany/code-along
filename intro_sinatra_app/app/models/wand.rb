@@ -1,4 +1,4 @@
-class Wand < ActiveRecord::Base
+class Wands < ActiveRecord::Base
 
   def to_s
       "#{self.wood}, #{self.length}, #{self.core}"
