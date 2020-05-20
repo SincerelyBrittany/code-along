@@ -1,3 +1,6 @@
 [submodule "animalCodeAlong2"]
 	path = animalCodeAlong2
 	url = https://github.com/SincerelyBrittany/animal_wiki_codealong
+[submodule "craiglist_sql_codealong"]
+	path = craiglist_sql_codealong
+	url = https://github.com/SincerelyBrittany/craiglist_sql_codealong
