@@ -1,0 +1,6 @@
+source "https://rubyems.org"
+
+gem 'sinatra'
+# gem 'twitter'
+gem 'shotgun'
+gem 'pry'
