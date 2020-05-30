@@ -1,0 +1,9 @@
+
+Used the following youtube video: https://www.youtube.com/watch?v=sR7xGHqXG-Y&feature=youtu.be
+
+# def test_start_args(*puppies)
+#   puts puppies.to_s
+# end
+#
+# test_start_args(:fluffy, :dadilion, :spot)
+#
