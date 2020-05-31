@@ -1,0 +1,74 @@
+Youtube Code-Along: https://www.youtube.com/watch?v=_S1s6R-_wYc
+
+
+get '/' do
+  session[:greeting] = "Hello WOrls"
+  "Hello work"
+end
+
+get '/remember' do
+  session[:greeting]
+end
+
+This should be impossible -- It will keep the above -- maintain the state -- set some state on request num 1 --
+
+but when you went to request two every web request happens independently
+
+requst 1
+request 1 the state that was set on the previous request was maintained -- becuase of the cookie.
+
+If you udate the cookie -- you wont see the hello world -- anything thats on a cookie, a user can edit (never put private info)
+
+
+get '/' do
+  session[:greeting] = "Hello WOrls"
+  response.set_cookie 'credit_amount', '100'
+  "Hello work"
+end
+
+get '/remember' do
+  "you hvave #{request.cookies['foo']}"
+  session[:greeting]
+end
+
+use Rack::MethodOverride
+use Rack::Session::Cookie
+run ApplicationController
+
+always put data in a session -- dont put data in a cookies
+
+
+STEPS YOU TOOK
+
+ Created new controller
+
+ 'touch app/controllers/sessions_controller.rb'
+
+ Mount controller in config.ru
+
+
+
+
+
+Authentication
+
+Remember who the user is
+
+create form in login
+
+
+
+Question that authenication is asking our application is -- is the user who they claim to be?
+
+
+
+First I need users
+  URLS
+    get request ro sign up and see a --> see a information
+  Database
+
+Then I need to get user password_security \
+then make sure that i can find a user with their actual password_security
+then change log in system to use their email and password to authenticate them
+
+How do we get users?
