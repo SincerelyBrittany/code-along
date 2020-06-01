@@ -15,10 +15,29 @@ class ApplicationController < Sinatra::Base
       !!session[:email]
     end
 
-    def login(email)
-      #Is the user who they claim to be?
-      session[:email] = email
-    end
+    # def login(email,password)
+		# 	#check if a user with this email actually exist
+		# 	#if so set the establish_connection
+		# 	#otherwise return false/something becuase its not found
+		# 	if user = User.find_by(:email => email)
+		# 		if user.authenticate(password) #if statement assignment
+		# 		session[:email] = user.email
+		# 		end
+		# 	else
+		# 		redirect '/login'
+		# 	end
+    #   #Is the user who they claim to be?
+    #   # session[:email] = email
+    # end
+
+		def login(email,password)
+			user = User.find_by(:email => email)
+			if user && user.authenticate(password)
+				session[:email] = user.email
+			else
+				redirect '/login'
+			end
+		end
 
     def logout!
       session.clear

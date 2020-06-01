@@ -1,5 +1,7 @@
 Youtube Code-Along: https://www.youtube.com/watch?v=_S1s6R-_wYc
 
+Documentation https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
+
 
 get '/' do
   session[:greeting] = "Hello WOrls"
@@ -72,3 +74,34 @@ then make sure that i can find a user with their actual password_security
 then change log in system to use their email and password to authenticate them
 
 How do we get users?
+
+
+
+
+
+
+// ♥ > u = User.new
+// ♥ > u.password = "hello"
+ ♥ > rake console
+[1] pry(main)> u = User.new
+=> #<User:0x00007fe38617ea00 id: nil, email: nil, password_digest: nil>
+[2] pry(main)> u.password = "hello"
+=> "hello"
+[3] pry(main)> u.email = "hello@example.com"
+=> "hello@example.com"
+[4] pry(main)> u.save
+=> true
+[5] pry(main)> u
+=> #<User:0x00007fe38617ea00 id: 2, email: "hello@example.com", password_digest: "$2a$12$Zq0gZobQ1/IsaRwGFrjZC.93PVk8smfZOKLFbX3nqrHUiscLTfGt.">
+[6] pry(main)> exit
+
+// ♥ > rake console
+[1] pry(main)> u = User.find_by(:email => "hello@example.com")
+=> #<User:0x00007f85f6c496a8 id: 2, email: "hello@example.com", password_digest: "$2a$12$Zq0gZobQ1/IsaRwGFrjZC.93PVk8smfZOKLFbX3nqrHUiscLTfGt.">
+[2] pry(main)> u.password
+=> nil
+[3] pry(main)> u.authenticate("hello")
+=> #<User:0x00007f85f6c496a8 id: 2, email: "hello@example.com", password_digest: "$2a$12$Zq0gZobQ1/IsaRwGFrjZC.93PVk8smfZOKLFbX3nqrHUiscLTfGt.">
+[4] pry(main)> u.authenticate("notthepassword")
+=> false
+[5] pry(main)>

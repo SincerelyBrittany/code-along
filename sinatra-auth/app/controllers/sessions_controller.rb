@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     #You want to put the params in a session - you want to persist the cookie/information
     # session[:email] = params[:email]
     #login a user with an email
-    login(params[:email])
+    login(params[:email], params[:password])
     redirect '/posts'
   end
 
