@@ -14,9 +14,9 @@ class UsersController < ApplicationController
     @user.email = params[:email]
     @user.password = params[:password]
     if @user.save
-      redirect '/login'
+      redirect '/login' #This is a redirect
     else
-    erb :'users/new'
+    erb :'users/new' #THis is a render
     end
   end
 end

@@ -15,6 +15,10 @@ class ApplicationController < Sinatra::Base
       !!session[:email]
     end
 
+		def current_user
+			@current_user ||= User.find_by(:email => session[:email]) if session[:email]
+		end
+
     # def login(email,password)
 		# 	#check if a user with this email actually exist
 		# 	#if so set the establish_connection
@@ -39,11 +43,11 @@ class ApplicationController < Sinatra::Base
 			end
 		end
 
+
     def logout!
       session.clear
       #emailing them to let them know they logged out
+			redirect '/login'
     end
   end
-
-
 end
